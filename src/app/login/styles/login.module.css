@@ -1,0 +1,27 @@
+/* styles/login.module.css */
+
+.inputField {
+    border: 2px solid #d1d5db; 
+    background-color: white;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .inputField:focus {
+    border-color: #BEADFF;
+    box-shadow: 0 0 8px rgba(190, 173, 255, 0.6), 0 0 15px rgba(190, 173, 255, 0.3);
+    outline: none;
+  }
+  
+  .errorField {
+    border-color: #ff3939; 
+  }
+  
+  .errorLabel {
+    color: #ff3939; 
+  }
+  
+  .errorText {
+    margin-left: 8px;
+    color: #ff3939;
+  }
+  
