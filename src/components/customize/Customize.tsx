@@ -74,8 +74,7 @@ const Customize: React.FC<CustomizeProps> = ({ onAddLink }) => {
 
     if (valid) {
       const newLinkData = { ...newLink, icon: selectedPlatform?.icon, label: selectedPlatform?.label };
-      console.log('New link added:', newLinkData);
-      onAddLink(newLinkData);
+onAddLink({ ...newLinkData, title: newLinkData.label });
       setNewLink({ title: '', url: '', icon: null, label: '' });
       setSelectedPlatform(null);
       setShowForm(false);
