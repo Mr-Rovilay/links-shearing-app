@@ -6,6 +6,29 @@ body{
     background: #FAFAFA;
 }
 
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+}
+
+
 .inputField {
     border: 2px solid #d1d5db; 
     background-color: white;
