@@ -41,7 +41,7 @@ type CustomizeProps = {
 };
 
 
-const Customize: React.FC<CustomizeProps> = ({ onAddLink }) => {
+export default function Customize({ onAddLink }: CustomizeProps) {
   const [showForm, setShowForm] = useState(false);
   const [newLink, setNewLink] = useState({ title: '', url: '', icon: null, label: '' });
   const [selectedPlatform, setSelectedPlatform] = useState(null);
@@ -197,4 +197,3 @@ const Customize: React.FC<CustomizeProps> = ({ onAddLink }) => {
     </>
   );
 };
-export default Customize;
