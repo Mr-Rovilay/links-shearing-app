@@ -141,7 +141,7 @@ const ProfileDetails = () => {
             </form>
             </div>
        
-          <div className="bg-white rounded-b-lg flex justify-end lg:pr-8 lg:py-2 mt-48">
+          <div className="bg-white rounded-b-lg flex justify-end lg:pr-8 lg:py-2">
             <button 
               onClick={handleFormSubmit}
               className="bg-[#633CFF] text-white font-bold px-8 py-4 rounded-xl hover:bg-[#BEADFF] transition-colors duration-200 sm:w-full lg:w-auto"
