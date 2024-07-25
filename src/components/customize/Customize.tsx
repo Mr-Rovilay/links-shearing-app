@@ -7,7 +7,8 @@ import { AiOutlineGithub, AiOutlineFacebook, AiOutlineTwitter, AiOutlineLinkedin
 import { ImTwitch } from "react-icons/im";
 import { SiFrontendmentor, SiCodewars } from "react-icons/si";
 import { FaHashnode } from "react-icons/fa6";
-import { FaDev, FaFreeCodeCamp, FaGitlab,  FaStackOverflow } from "react-icons/fa";
+import { FaDev, FaFreeCodeCamp, FaGitlab, FaStackOverflow } from "react-icons/fa";
+import { Link } from '@/types/link';
 
 const platformOptions = [
   { value: 'Github', label: 'Github', icon: <AiOutlineGithub className="mr-2" /> },
@@ -26,19 +27,12 @@ const platformOptions = [
 ];
 
 interface CustomizeProps {
-  onAddLink: (newLink: { label: string; url: string; icon: JSX.Element | null }) => void;
-}
-
-export interface Link {
-  title: string;
-  url: string;
-  icon: JSX.Element | null;
-  label: string;
+  onAddLink: (newLink: Link) => void;
 }
 
 const Customize: React.FC<CustomizeProps> = ({ onAddLink }) => {
   const [showForm, setShowForm] = useState(false);
-  const [newLink, setNewLink] = useState<Link>({ title: '', url: '', icon: null, label: '' });
+  const [newLink, setNewLink] = useState<Link>({ title: '', url: '', icon: <AiOutlineGithub />, label: '' });
   const [selectedPlatform, setSelectedPlatform] = useState<typeof platformOptions[number] | null>(null);
   const [errors, setErrors] = useState({ url: '', platform: '' });
 
@@ -73,9 +67,10 @@ const Customize: React.FC<CustomizeProps> = ({ onAddLink }) => {
     setErrors(newErrors);
 
     if (valid) {
-      const newLinkData = { ...newLink, icon: selectedPlatform?.icon, label: selectedPlatform?.label };
-onAddLink({ ...newLinkData, title: newLinkData.label });
-      setNewLink({ title: '', url: '', icon: null, label: '' });
+      const newLinkData = { ...newLink, icon: selectedPlatform?.icon, label: selectedPlatform?.label, title: selectedPlatform?.label };
+      console.log('New link added:', newLinkData);
+  
+      setNewLink({ title: '', url: '', icon: <AiOutlineGithub />, label: '' });
       setSelectedPlatform(null);
       setShowForm(false);
     }

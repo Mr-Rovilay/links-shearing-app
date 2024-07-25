@@ -7,8 +7,9 @@ import { useRouter } from 'next/navigation';
 import { auth } from '@/lib/firebaseConfig';
 import Navbar from '@/components/navbar/Navbar';
 import AnimationWrapper from '@/components/common/AnimationWrapper';
-import Customize from '../components/customize/Customize';
+
 import ProfileDetails from '@/components/profile/ProfileDetails';
+import Customize from '@/components/customize/Customize';
 
 export type Link = {
   label: string;
@@ -79,7 +80,7 @@ const Home = () => {
 
           <div className="shadow-md rounded-xl w-full lg:w-[60%] flex flex-col gap-2">
             {view === 'links' ? (
-              <Customize onAddLink={handleAddLink} />
+             <Customize onAddLink={handleAddLink} />
             ) : (
               <ProfileDetails />
             )}
