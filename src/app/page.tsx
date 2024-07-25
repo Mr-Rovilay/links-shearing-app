@@ -40,7 +40,7 @@ const Home = () => {
             <div className="flex flex-col w-[60%] gap-4">
               {links.length === 0 ? (
                 <div className="w-full">
-                  <img src="/Frame 257.png" alt="Placeholder" className="h-[100%] w-[100%]" />
+                  <img src="/images/Frame257.png" alt="Placeholder" className="h-[100%] w-[100%]" />
                 </div>
               ) : (
                 <>
