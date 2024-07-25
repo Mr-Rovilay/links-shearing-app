@@ -1,21 +1,16 @@
-'use client'
-import { ReactNode } from 'react';
-import { useState, useEffect } from 'react';
+// src/app/page.tsx or src/pages/index.tsx
+'use client';
+import { ReactNode, useState, useEffect } from 'react';
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useRouter } from 'next/navigation';
 import { auth } from '@/lib/firebaseConfig';
 import Navbar from '@/components/navbar/Navbar';
 import AnimationWrapper from '@/components/common/AnimationWrapper';
-
 import ProfileDetails from '@/components/profile/ProfileDetails';
 import Customize from '@/components/customize/Customize';
+import { Link } from '@/types/link';
 
-export type Link = {
-  label: string;
-  url: string;
-  icon: JSX.Element | null;
-};
 
 const Home = () => {
   const [user] = useAuthState(auth);
@@ -66,7 +61,7 @@ const Home = () => {
                     >
                       <div className="flex justify-center items-center gap-2">
                         <span className='text-white text-xl'>{link.icon}</span>
-                        <a href={link.url} target="_blank" rel="noopener noreferrer" className="text-white">{link.label}</a>
+                        <a href={link.url} target="_blank" rel="noopener noreferrer" className="text-white">{link.title}</a>
                       </div>
                       <div className="text-white">
                         <FaLongArrowAltRight />

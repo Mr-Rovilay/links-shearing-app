@@ -1,3 +1,4 @@
+// src/components/customize/Customize.tsx
 import React, { useState } from 'react';
 import { Menu, MenuButton, MenuItem } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
@@ -8,7 +9,7 @@ import { ImTwitch } from "react-icons/im";
 import { SiFrontendmentor, SiCodewars } from "react-icons/si";
 import { FaHashnode } from "react-icons/fa6";
 import { FaDev, FaFreeCodeCamp, FaGitlab, FaStackOverflow } from "react-icons/fa";
-import { Link } from '@/types/link';
+import { Link } from '../../types/link'; // Adjust the import path
 
 const platformOptions = [
   { value: 'Github', label: 'Github', icon: <AiOutlineGithub className="mr-2" /> },
@@ -32,7 +33,7 @@ interface CustomizeProps {
 
 const Customize: React.FC<CustomizeProps> = ({ onAddLink }) => {
   const [showForm, setShowForm] = useState(false);
-  const [newLink, setNewLink] = useState<Link>({ title: '', url: '', icon: <AiOutlineGithub />, label: '' });
+  const [newLink, setNewLink] = useState<Omit<Link, 'title'>>({ url: '', icon: null, label: '' });
   const [selectedPlatform, setSelectedPlatform] = useState<typeof platformOptions[number] | null>(null);
   const [errors, setErrors] = useState({ url: '', platform: '' });
 
@@ -67,10 +68,15 @@ const Customize: React.FC<CustomizeProps> = ({ onAddLink }) => {
     setErrors(newErrors);
 
     if (valid) {
-      const newLinkData = { ...newLink, icon: selectedPlatform?.icon, label: selectedPlatform?.label, title: selectedPlatform?.label };
+      const newLinkData: Link = { 
+        ...newLink, 
+        icon: selectedPlatform?.icon || null, 
+        label: selectedPlatform?.label || '', 
+        title: selectedPlatform?.label || '' 
+      };
       console.log('New link added:', newLinkData);
-  
-      setNewLink({ title: '', url: '', icon: <AiOutlineGithub />, label: '' });
+      onAddLink(newLinkData);
+      setNewLink({ url: '', icon: null, label: '' });
       setSelectedPlatform(null);
       setShowForm(false);
     }
@@ -151,14 +157,14 @@ const Customize: React.FC<CustomizeProps> = ({ onAddLink }) => {
               </Menu>
               {errors.platform && <p className="text-[#ff3939] text-sm">{errors.platform}</p>}
               <h1 className='text-1xl'>Links</h1>
-              <div className="relative">
-                <input 
-                  type="url" 
-                  name="url" 
-                  value={newLink.url} 
-                  onChange={handleFormChange} 
-                  placeholder="e.g https://github.com/johndoe"
-                  className={`flex w-full justify-between gap-x-1.5 rounded-md px-3 py-3 text-xl text-[#737373] border  hover:border-[#633cff]  ${errors.url ? 'ring-red-500' : 'ring-gray-300'}`} 
+              <div className="relative mt-2 rounded-md shadow-sm">
+                <input
+                  type="text"
+                  name="url"
+                  value={newLink.url}
+                  onChange={handleFormChange}
+                  placeholder="https://example.com"
+                  className={`block w-full rounded-md bg-white px-3 py-3 text-xl text-[#737373] border  hover:border-[#633cff]  ${errors.url ? 'ring-red-500' : 'ring-gray-300'}`} 
                 />
               </div>
               {errors.url && <p className="text-[#ff3939] text-sm">{errors.url}</p>}

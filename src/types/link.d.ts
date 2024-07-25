@@ -2,6 +2,6 @@
 export interface Link {
   title: string;
   url: string;
-  icon?: React.JSX.Element;
-  label?: string;
+  icon: JSX.Element | null;
+  label: string;
 }
