@@ -139,8 +139,6 @@ const ProfileDetails = () => {
                 </div>
               </div>
             </form>
-            </div>
-       
           <div className="bg-white rounded-b-lg flex justify-end lg:pr-8 lg:py-2">
             <button 
               onClick={handleFormSubmit}
@@ -149,7 +147,7 @@ const ProfileDetails = () => {
               Save
             </button>
           </div>
-    
+            </div>
       </AnimationWrapper>
     </>
   );
