@@ -171,9 +171,9 @@ const Customize: React.FC<CustomizeProps> = ({ onAddLink }) => {
             </form>
           ) : (
             <div className="flex flex-col items-center justify-center">
-              <img src="/images/Group 273.svg" className="max-w-full h-auto mb-4 w-80 mt-16" />
+              <img src="/images/Group 273.svg" className="max-w-full h-auto w-80" />
               <h2 className="text-5xl font-bold mb-2">Let's get you started</h2>
-              <p className="text-[#737373] text-center px-40 pb-20 pt-12">
+              <p className="text-[#737373] text-center pb-20 pt-10">
                 Use the "Add new link" button to get started. Once you have more than one link, you can reorder and edit them. We're here to help you share your profile with everyone.
               </p>
             </div>
