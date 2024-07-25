@@ -6,7 +6,8 @@ import { LuInstagram } from "react-icons/lu";
 import { AiOutlineGithub, AiOutlineFacebook, AiOutlineTwitter, AiOutlineLinkedin } from 'react-icons/ai';
 import { ImTwitch } from "react-icons/im";
 import { SiFrontendmentor, SiCodewars } from "react-icons/si";
-import { FaDev, FaFreeCodeCamp, FaGitlab, FaHashnode, FaStackOverflow } from "react-icons/fa";
+import { FaHashnode } from "react-icons/fa6";
+import { FaDev, FaFreeCodeCamp, FaGitlab,  FaStackOverflow } from "react-icons/fa";
 
 const platformOptions = [
   { value: 'Github', label: 'Github', icon: <AiOutlineGithub className="mr-2" /> },
