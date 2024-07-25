@@ -1,4 +1,5 @@
 'use client';
+
 import AnimationWrapper from '@/components/common/AnimationWrapper';
 import { useState, ChangeEvent, FormEvent } from 'react';
 import { CiImageOn } from "react-icons/ci";
@@ -62,36 +63,35 @@ const ProfileDetails = () => {
   return (
     <>
       <AnimationWrapper keyValue="uniqueKey1">
-            <h1 className="text-3xl font-bold mb-4 p-8">Profile Details</h1>
-            <p className="mb-6 text-gray-700 px-8">Add your details to create a personal touch on your profile.</p>
-            <div className="grid gap-8 mb-8 px-8">
-              <div className="grid lg:grid-cols-3 grid-cols-1 bg-gray-100 items-center p-6 rounded-lg border border-gray-300">
-                <h2 className="text-xl font-semibold mb-2">Profile Picture</h2>
-                <div className="relative flex flex-col my-6 items-center justify-center bg-[#efebff] border-dashed border-2 border-gray-300 rounded-lg h-48 overflow-hidden">
-                  {formData.profileImage ? (
-                    <img src={formData.profileImage} alt="Profile Preview" className="w-full h-full object-cover" />
-                  ) : (
-                    <CiImageOn className='text-5xl text-[#633CFF]' />
-                  )}
-                  <label htmlFor="fileInput" className="absolute bottom-9 cursor-pointer text-center font-bold text-[16px] text-[#633CFF] z-10">
-                    + Upload image here
-                  </label>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleFileChange}
-                    className="hidden"
-                    id="fileInput"
-                  />
-                </div>
-                <div className="text-left p-4">
-                  <p className="text-sm text-gray-500">Image must be below 1024x1024px. Use PNG or JPEG format.</p>
-                </div>
-              </div>
+        <h1 className="text-3xl font-bold mb-4 p-8">Profile Details</h1>
+        <p className="mb-6 text-gray-700 px-8">Add your details to create a personal touch on your profile.</p>
+        <div className="grid gap-8 mb-8 px-8">
+          <div className="grid lg:grid-cols-3 grid-cols-1 bg-gray-100 items-center p-6 rounded-lg border border-gray-300">
+            <h2 className="text-xl font-semibold mb-2">Profile Picture</h2>
+            <div className="relative flex flex-col my-6 items-center justify-center bg-[#efebff] border-dashed border-2 border-gray-300 rounded-lg h-48 overflow-hidden">
+              {formData.profileImage ? (
+                <img src={formData.profileImage} alt="Profile Preview" className="w-full h-full object-cover" />
+              ) : (
+                <CiImageOn className='text-5xl text-[#633CFF]' />
+              )}
+              <label htmlFor="fileInput" className="absolute bottom-9 cursor-pointer text-center font-bold text-[16px] text-[#633CFF] z-10">
+                + Upload image here
+              </label>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleFileChange}
+                className="hidden"
+                id="fileInput"
+              />
             </div>
-            <div className="bg-gray-100 m-8 rounded-lg border border-gray-300">
-
-
+            <div className="text-left p-4">
+              <p className="text-sm text-gray-500">Image must be below 1024x1024px. Use PNG or JPEG format.</p>
+            </div>
+          </div>
+        </div>
+        <div className="bg-gray-100 m-8 rounded-lg border border-gray-300">
+          <div className="flex flex-col">
             <form onSubmit={handleFormSubmit} className="">
               <div className="my-7 lg:grid lg:grid-cols-2 grid-cols-1 items-center relative px-8">
                 <label htmlFor="firstName" className="block text-[16px] font-medium text-[#737373] mb-1">First Name*</label>
@@ -139,7 +139,9 @@ const ProfileDetails = () => {
                 </div>
               </div>
             </form>
-          <div className="bg-white rounded-b-lg flex justify-end lg:pr-8 lg:py-2">
+          </div>
+        </div>
+          <div className="bg-white mr-6 rounded-b-lg flex justify-end lg:pr-auto lg:py-2 mt-44">
             <button 
               onClick={handleFormSubmit}
               className="bg-[#633CFF] text-white font-bold px-8 py-4 rounded-xl hover:bg-[#BEADFF] transition-colors duration-200 sm:w-full lg:w-auto"
@@ -147,7 +149,6 @@ const ProfileDetails = () => {
               Save
             </button>
           </div>
-            </div>
       </AnimationWrapper>
     </>
   );
