@@ -62,11 +62,9 @@ const ProfileDetails = () => {
   return (
     <>
       <AnimationWrapper keyValue="uniqueKey1">
-        <div className="shadow-md rounded-xl w-full h-screen flex flex-col justify-between">
-          <div className="p-8 bg-white shadow-md rounded-lg mx-auto h-full">
-            <h1 className="text-3xl font-bold mb-4">Profile Details</h1>
-            <p className="mb-6 text-gray-700">Add your details to create a personal touch on your profile.</p>
-            <div className="grid gap-8 mb-8">
+            <h1 className="text-3xl font-bold mb-4 p-8">Profile Details</h1>
+            <p className="mb-6 text-gray-700 px-8">Add your details to create a personal touch on your profile.</p>
+            <div className="grid gap-8 mb-8 px-8">
               <div className="grid lg:grid-cols-3 grid-cols-1 bg-gray-100 items-center p-6 rounded-lg border border-gray-300">
                 <h2 className="text-xl font-semibold mb-2">Profile Picture</h2>
                 <div className="relative flex flex-col my-6 items-center justify-center bg-[#efebff] border-dashed border-2 border-gray-300 rounded-lg h-48 overflow-hidden">
@@ -91,8 +89,11 @@ const ProfileDetails = () => {
                 </div>
               </div>
             </div>
-            <form onSubmit={handleFormSubmit} className="bg-gray-100 p-12 rounded-lg border border-gray-300">
-              <div className="mb-4 lg:grid lg:grid-cols-2 grid-cols-1 items-center relative">
+            <div className="bg-gray-100 m-8 rounded-lg border border-gray-300">
+
+
+            <form onSubmit={handleFormSubmit} className="">
+              <div className="my-7 lg:grid lg:grid-cols-2 grid-cols-1 items-center relative px-8">
                 <label htmlFor="firstName" className="block text-[16px] font-medium text-[#737373] mb-1">First Name*</label>
                 <div className="relative w-full">
                   <input
@@ -107,7 +108,7 @@ const ProfileDetails = () => {
                   {errors.firstName && <p className="absolute right-2 top-1/2 transform -translate-y-1/2 text-red-500 text-sm">{errors.firstName}</p>}
                 </div>
               </div>
-              <div className="mb-4 lg:grid lg:grid-cols-2 grid-cols-1 items-center relative">
+              <div className="mb-4 lg:grid lg:grid-cols-2 grid-cols-1 items-center relative px-8">
                 <label htmlFor="lastName" className="block text-[16px] font-medium text-[#737373] mb-1">Last Name*</label>
                 <div className="relative w-full">
                   <input
@@ -122,7 +123,7 @@ const ProfileDetails = () => {
                   {errors.lastName && <p className="absolute right-2 top-1/2 transform -translate-y-1/2 text-red-500 text-sm">{errors.lastName}</p>}
                 </div>
               </div>
-              <div className="mb-6 lg:grid lg:grid-cols-2 grid-cols-1 items-center relative">
+              <div className="mb-6 lg:grid lg:grid-cols-2 grid-cols-1 items-center relative px-8">
                 <label htmlFor="email" className="block text-[16px] font-medium text-[#737373] mb-1">Email*</label>
                 <div className="relative w-full">
                   <input
@@ -138,8 +139,9 @@ const ProfileDetails = () => {
                 </div>
               </div>
             </form>
-          </div>
-          <div className="bg-white shadow-md rounded-b-lg flex justify-end lg:pr-8 lg:py-2">
+            </div>
+       
+          <div className="bg-white rounded-b-lg flex justify-end lg:pr-8 lg:py-2 mt-48">
             <button 
               onClick={handleFormSubmit}
               className="bg-[#633CFF] text-white font-bold px-8 py-4 rounded-xl hover:bg-[#BEADFF] transition-colors duration-200 sm:w-full lg:w-auto"
@@ -147,7 +149,7 @@ const ProfileDetails = () => {
               Save
             </button>
           </div>
-        </div>
+    
       </AnimationWrapper>
     </>
   );
