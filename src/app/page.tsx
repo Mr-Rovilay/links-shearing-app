@@ -1,9 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react';
-import React, { JSX } from 'react'; 
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { useAuthState } from 'react-firebase-hooks/auth';
-
 import { useRouter } from 'next/navigation';
 import { auth } from '@/lib/firebaseConfig';
 import Navbar from '@/components/navbar/Navbar';
@@ -11,11 +9,10 @@ import AnimationWrapper from '@/components/common/AnimationWrapper';
 import Customize from './customize/page';
 import ProfileDetails from '@/components/profile/ProfileDetails';
 
-
 type Link = {
   label: string;
   url: string;
-  icon: JSX.Element;
+  icon: JSX.Element | null;
 };
 
 const Home = () => {
@@ -36,6 +33,7 @@ const Home = () => {
       router.push('/login');
     }
   }, [user, router]);
+
   return (
     <>
       <Navbar setView={setView} />

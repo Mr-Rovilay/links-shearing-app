@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React, { useState } from 'react';
 import { Menu, MenuButton, MenuItem } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
@@ -29,10 +29,11 @@ const platformOptions = [
   { value: 'Hashnode', label: 'Hashnode', icon: <FaHashnode className="mr-2" /> },
   { value: 'Stack Overflow', label: 'Stack Overflow', icon: <FaStackOverflow className="mr-2" /> },
 ];
+
 type Link = {
   title: string;
   url: string;
-  icon: React.ReactNode;
+  icon: React.ReactNode | null;
   label: string;
 };
 
@@ -40,28 +41,27 @@ type CustomizeProps = {
   onAddLink: (newLink: Link) => void;
 };
 
-
 export default function Customize({ onAddLink }: CustomizeProps) {
   const [showForm, setShowForm] = useState(false);
-  const [newLink, setNewLink] = useState({ title: '', url: '', icon: null, label: '' });
-  const [selectedPlatform, setSelectedPlatform] = useState(null);
+  const [newLink, setNewLink] = useState<Link>({ title: '', url: '', icon: null, label: '' });
+  const [selectedPlatform, setSelectedPlatform] = useState<typeof platformOptions[number] | null>(null);
   const [errors, setErrors] = useState({ url: '', platform: '' });
 
   const handleAddLink = () => {
     setShowForm(true);
   };
 
-  const handleFormChange = (e) => {
+  const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setNewLink({ ...newLink, [name]: value });
     setErrors({ ...errors, [name]: '' });
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     let valid = true;
     const newErrors = { url: '', platform: '' };
-  
+
     if (!newLink.url) {
       newErrors.url = 'Cant be empty';
       valid = false;
@@ -69,14 +69,14 @@ export default function Customize({ onAddLink }: CustomizeProps) {
       newErrors.url = 'Invalid URL';
       valid = false;
     }
-  
+
     if (!selectedPlatform) {
       newErrors.platform = 'Platform is required';
       valid = false;
     }
-  
+
     setErrors(newErrors);
-  
+
     if (valid) {
       const newLinkData = { ...newLink, icon: selectedPlatform?.icon, label: selectedPlatform?.label };
       console.log('New link added:', newLinkData);
@@ -86,7 +86,6 @@ export default function Customize({ onAddLink }: CustomizeProps) {
       setShowForm(false);
     }
   };
-  
 
   const handleRemove = () => {
     setSelectedPlatform(null);
@@ -121,7 +120,7 @@ export default function Customize({ onAddLink }: CustomizeProps) {
                 </button>
               </div>
               <h1 className='text-1xl'>Platform</h1>
-              <Menu as="div" className="relative  inline-block text-left">
+              <Menu as="div" className="relative inline-block text-left">
                 <div>
                   <MenuButton className={`flex w-full justify-between gap-x-1.5 rounded-md bg-white px-3 py-3 text-xl text-[#737373] border  hover:border-[#633cff]  ${errors.platform ? 'ring-red-500' : 'ring-gray-300'}`}>
                     <div className="flex items-center justify-center gap-2">
@@ -131,7 +130,7 @@ export default function Customize({ onAddLink }: CustomizeProps) {
                     <ChevronDownIcon aria-hidden="true" className="-mr-1 h-5 w-5 text-gray-400" />
                   </MenuButton>
                 </div>
-                <Menu.Items className="absolute right-0 z-10 mt-2 w-full origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none border ">
+                <Menu.Items className="absolute right-0 z-10 mt-2 w-full origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none border">
                   <div className="">
                     {platformOptions.map((option, index) => (
                       <div key={option.value}>
@@ -170,7 +169,7 @@ export default function Customize({ onAddLink }: CustomizeProps) {
                   value={newLink.url} 
                   onChange={handleFormChange} 
                   placeholder="e.g https://github.com/johndoe" 
-                  className={`p-2 rounded border inputField w-full  ${errors.url ? 'border-[#ff3939] shadow-sm shadow-[#ff3939]' : 'border-gray-300'}`}
+                  className={`p-2 rounded border inputField w-full ${errors.url ? 'border-[#ff3939] shadow-sm shadow-[#ff3939]' : 'border-gray-300'}`}
                 />
                 {errors.url && <div className="absolute right-2 top-2 text-[#ff3939] text-sm">{errors.url}</div>}
               </div>
@@ -196,4 +195,4 @@ export default function Customize({ onAddLink }: CustomizeProps) {
       </div>
     </>
   );
-};
+}
