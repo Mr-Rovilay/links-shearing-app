@@ -1,6 +1,6 @@
 'use client'
-import React, { useState, useEffect } from 'react';
-
+import { useState, useEffect } from 'react';
+import React, { JSX } from 'react'; 
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { useAuthState } from 'react-firebase-hooks/auth';
 
@@ -80,7 +80,7 @@ const Home = () => {
 
           <div className="shadow-md rounded-xl w-full lg:w-[60%] flex flex-col gap-2">
             {view === 'links' ? (
-              <Customize />
+              <Customize onAddLink={handleAddLink} />
             ) : (
               <ProfileDetails />
             )}
