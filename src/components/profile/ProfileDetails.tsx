@@ -8,7 +8,7 @@ const ProfileDetails = () => {
     firstName: '',
     lastName: '',
     email: '',
-    profileImage: null,
+    profileImage: '',
   });
   const [errors, setErrors] = useState({
     firstName: '',
@@ -16,13 +16,13 @@ const ProfileDetails = () => {
     email: '',
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e: { target: { name: any; value: any; }; }) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
     setErrors({ ...errors, [name]: '' });
   };
 
-  const handleFileChange = (e) => {
+  const handleFileChange = (e: { target: { files: any[]; }; }) => {
     const file = e.target.files[0];
     if (file) {
       setFormData({ ...formData, profileImage: URL.createObjectURL(file) });
@@ -38,7 +38,7 @@ const ProfileDetails = () => {
     return newErrors;
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     const validationErrors = validateForm();
     if (Object.keys(validationErrors).length === 0) {
