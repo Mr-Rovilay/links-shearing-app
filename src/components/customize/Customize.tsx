@@ -5,11 +5,8 @@ import { HiOutlineMenuAlt4 } from "react-icons/hi";
 import { LuInstagram } from "react-icons/lu";
 import { AiOutlineGithub, AiOutlineFacebook, AiOutlineTwitter, AiOutlineLinkedin } from 'react-icons/ai';
 import { ImTwitch } from "react-icons/im";
-import { SiFrontendmentor } from "react-icons/si";
-import { FaDev } from "react-icons/fa";
-import { SiCodewars } from "react-icons/si";
-import { FaFreeCodeCamp } from "react-icons/fa";
-import { FaGitlab, FaHashnode, FaStackOverflow } from "react-icons/fa6";
+import { SiFrontendmentor, SiCodewars } from "react-icons/si";
+import { FaDev, FaFreeCodeCamp, FaGitlab, FaHashnode, FaStackOverflow } from "react-icons/fa";
 
 const platformOptions = [
   { value: 'Github', label: 'Github', icon: <AiOutlineGithub className="mr-2" /> },
@@ -27,16 +24,16 @@ const platformOptions = [
   { value: 'Stack Overflow', label: 'Stack Overflow', icon: <FaStackOverflow className="mr-2" /> },
 ];
 
-type Link = {
+interface CustomizeProps {
+  onAddLink: (newLink: { label: string; url: string; icon: JSX.Element | null }) => void;
+}
+
+export interface Link {
   title: string;
   url: string;
-  icon: React.ReactNode | null;
+  icon: JSX.Element | null;
   label: string;
-};
-
-type CustomizeProps = {
-  onAddLink: (newLink: Link) => void;
-};
+}
 
 const Customize: React.FC<CustomizeProps> = ({ onAddLink }) => {
   const [showForm, setShowForm] = useState(false);
@@ -60,7 +57,7 @@ const Customize: React.FC<CustomizeProps> = ({ onAddLink }) => {
     const newErrors = { url: '', platform: '' };
 
     if (!newLink.url) {
-      newErrors.url = 'Cant be empty';
+      newErrors.url = 'Cannot be empty';
       valid = false;
     } else if (!/^https?:\/\/.+\..+/.test(newLink.url)) {
       newErrors.url = 'Invalid URL';

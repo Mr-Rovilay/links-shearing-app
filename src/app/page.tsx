@@ -1,4 +1,5 @@
 'use client'
+import { ReactNode } from 'react';
 import { useState, useEffect } from 'react';
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -9,7 +10,7 @@ import AnimationWrapper from '@/components/common/AnimationWrapper';
 import Customize from '../components/customize/Customize';
 import ProfileDetails from '@/components/profile/ProfileDetails';
 
-type Link = {
+export type Link = {
   label: string;
   url: string;
   icon: JSX.Element | null;
