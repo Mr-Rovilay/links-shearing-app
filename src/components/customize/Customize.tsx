@@ -1,4 +1,3 @@
-'use client';
 import React, { useState } from 'react';
 import { Menu, MenuButton, MenuItem } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
@@ -10,9 +9,7 @@ import { SiFrontendmentor } from "react-icons/si";
 import { FaDev } from "react-icons/fa";
 import { SiCodewars } from "react-icons/si";
 import { FaFreeCodeCamp } from "react-icons/fa";
-import { FaGitlab } from "react-icons/fa6";
-import { FaHashnode } from "react-icons/fa6";
-import { FaStackOverflow } from "react-icons/fa";
+import { FaGitlab, FaHashnode, FaStackOverflow } from "react-icons/fa6";
 
 const platformOptions = [
   { value: 'Github', label: 'Github', icon: <AiOutlineGithub className="mr-2" /> },
@@ -41,7 +38,7 @@ type CustomizeProps = {
   onAddLink: (newLink: Link) => void;
 };
 
-export default function Customize({ onAddLink }: CustomizeProps) {
+const Customize: React.FC<CustomizeProps> = ({ onAddLink }) => {
   const [showForm, setShowForm] = useState(false);
   const [newLink, setNewLink] = useState<Link>({ title: '', url: '', icon: null, label: '' });
   const [selectedPlatform, setSelectedPlatform] = useState<typeof platformOptions[number] | null>(null);
@@ -168,15 +165,15 @@ export default function Customize({ onAddLink }: CustomizeProps) {
                   name="url" 
                   value={newLink.url} 
                   onChange={handleFormChange} 
-                  placeholder="e.g https://github.com/johndoe" 
-                  className={`p-2 rounded border inputField w-full ${errors.url ? 'border-[#ff3939] shadow-sm shadow-[#ff3939]' : 'border-gray-300'}`}
+                  placeholder="e.g https://github.com/johndoe"
+                  className={`flex w-full justify-between gap-x-1.5 rounded-md px-3 py-3 text-xl text-[#737373] border  hover:border-[#633cff]  ${errors.url ? 'ring-red-500' : 'ring-gray-300'}`} 
                 />
-                {errors.url && <div className="absolute right-2 top-2 text-[#ff3939] text-sm">{errors.url}</div>}
               </div>
+              {errors.url && <p className="text-[#ff3939] text-sm">{errors.url}</p>}
             </form>
           ) : (
-            <div className="bg-gray-100 p-6 rounded-lg mb-8 flex flex-col items-center justify-center h-[80%]">
-              <img src="/Group 273.svg" alt="Placeholder" className="max-w-full h-auto mb-4 w-80 mt-16" />
+            <div className="flex flex-col items-center justify-center">
+              <img src="https://res.cloudinary.com/dkcu7n23q/image/upload/v1690472186/image_3_qzqpbm.png" className="max-w-full h-auto mb-4 w-80 mt-16" />
               <h2 className="text-5xl font-bold mb-2">Let's get you started</h2>
               <p className="text-[#737373] text-center px-40 pb-20 pt-12">
                 Use the "Add new link" button to get started. Once you have more than one link, you can reorder and edit them. We're here to help you share your profile with everyone.
@@ -196,3 +193,5 @@ export default function Customize({ onAddLink }: CustomizeProps) {
     </>
   );
 }
+
+export default Customize;

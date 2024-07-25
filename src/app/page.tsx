@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { auth } from '@/lib/firebaseConfig';
 import Navbar from '@/components/navbar/Navbar';
 import AnimationWrapper from '@/components/common/AnimationWrapper';
-import Customize from './customize/page';
+import Customize from '../components/customize/Customize';
 import ProfileDetails from '@/components/profile/ProfileDetails';
 
 type Link = {
