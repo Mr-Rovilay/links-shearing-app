@@ -1,4 +1,3 @@
-// src/app/page.tsx or src/pages/index.tsx
 'use client'
 import { ReactNode, useState, useEffect } from 'react';
 import { FaLongArrowAltRight } from "react-icons/fa";
@@ -12,9 +11,9 @@ import Customize from '@/components/customize/Customize';
 import { Link } from '@/types/link';
 
 const Home = () => {
-  const [user] = useAuthState(auth);
+  const [user, loading, error] = useAuthState(auth); // Include loading and error states
   const router = useRouter();
-  const [view, setView] = useState('links'); 
+  const [view, setView] = useState('links');
   const [links, setLinks] = useState<Link[]>([]);
   const colors = ["#FF3939", "#333333", "#6336ff", "#Beadff", "#FF8C33", "#FAFAFA", "#8D493A"];
 
@@ -23,10 +22,20 @@ const Home = () => {
   };
 
   useEffect(() => {
+    console.log('User state changed:', { user, loading, error }); // Log user state
+    if (loading) {
+      console.log('Loading user authentication...');
+      return;
+    }
+    if (error) {
+      console.error('Error in authentication:', error);
+      return;
+    }
     if (!user) {
+      console.log('User not authenticated. Redirecting to login...');
       router.push('/login');
     }
-  }, [user, router]);
+  }, [user, loading, error, router]);
 
   return (
     <>

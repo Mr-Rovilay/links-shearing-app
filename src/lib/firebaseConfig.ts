@@ -1,9 +1,9 @@
-// lib/firebaseConfig.ts
 import { initializeApp, getApps, getApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import { getAuth, setPersistence, browserLocalPersistence } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
+// Firebase configuration
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: "link-shearing-app.firebaseapp.com",
@@ -14,8 +14,21 @@ const firebaseConfig = {
   measurementId: "G-RJGJ52CJWT"
 };
 
+// Initialize Firebase
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
+console.log('Firebase app initialized:', app);
+
 const auth = getAuth(app);
+
+// Set persistence to local storage
+setPersistence(auth, browserLocalPersistence)
+  .then(() => {
+    console.log("Firebase authentication persistence set to local storage.");
+  })
+  .catch((error) => {
+    console.error("Error setting persistence:", error);
+  });
+
 const firestore = getFirestore(app);
 const storage = getStorage(app);
 

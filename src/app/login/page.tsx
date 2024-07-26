@@ -9,6 +9,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { auth } from "@/lib/firebaseConfig";
 import AnimationWrapper from "@/components/common/AnimationWrapper";
+import { setPersistence, browserLocalPersistence } from "firebase/auth";
 
 
 const login = () => {
@@ -28,14 +29,16 @@ const login = () => {
       setEmailError("Can't be empty");
       return;
     }
-
+  
     if (!password) {
       setPasswordError("Please check again");
       return;
     }
     try {
-      const res = await signInWithEmailAndPassword(auth, email, password);
-sessionStorage.setItem("user", JSON.stringify(true));
+      // Ensure to set persistence here
+      await setPersistence(auth, browserLocalPersistence);
+      await signInWithEmailAndPassword(auth, email, password);
+      sessionStorage.setItem("user", JSON.stringify(true));
       setEmail("");
       setPassword("");
       router.push("/");
