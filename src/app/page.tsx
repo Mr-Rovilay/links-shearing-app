@@ -1,5 +1,5 @@
 // src/app/page.tsx or src/pages/index.tsx
-'use client';
+'use client'
 import { ReactNode, useState, useEffect } from 'react';
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -10,7 +10,6 @@ import AnimationWrapper from '@/components/common/AnimationWrapper';
 import ProfileDetails from '@/components/profile/ProfileDetails';
 import Customize from '@/components/customize/Customize';
 import { Link } from '@/types/link';
-
 
 const Home = () => {
   const [user] = useAuthState(auth);
@@ -49,9 +48,7 @@ const Home = () => {
                       className="w-24 h-24 rounded-full mb-2 mt-6" 
                     />
                     <div className="flex gap-2 justify-center items-center">
-                      
-                    <p className="text-gray-600">{user?.firstName || "first Name"}</p>
-                    <p className="text-gray-600">{user?.lastName || "last Name"}</p>
+                      <p className="text-xl font-bold">{user?.displayName || "User Name"}</p>
                     </div>
                     <p className="text-gray-600">{user?.email || "user.email@example.com"}</p>
                   </div>
