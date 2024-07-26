@@ -25,10 +25,10 @@ const Preview = () => {
   return (
     <>
       <div className="relative h-screen flex flex-col">
-        <div className="bg-[#633cff] h-1/2 w-full rounded-b-3xl"></div>
+        <div className="hidden sm:block bg-[#633cff] h-1/2 w-full rounded-b-3xl"></div>
         <div className="bg-white h-1/2 w-full"></div>
         <nav className="absolute top-0 left-0 right-0 bg-white shadow-lg rounded-xl mx-8 mt-8 sm:px-11">
-          <div className="flex items-center justify-between px-8 py-6">
+          <div className="flex items-center justify-between px-6 py-5">
             <Link href="/" passHref>
               <button className="border border-[#633cff] text-[#633cff] font-bold px-7 py-4 rounded-lg hover:bg-[#BEADFF]">
                 Back to Editor
@@ -44,8 +44,8 @@ const Preview = () => {
             </Link>
           </div>
         </nav>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white py-20 px-24 rounded-2xl shadow-xl max-w-md mt-28 pb-auto">
-          <div className="flex flex-col gap-6 items-center mb-12 px-7">
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white py-20 px-24 rounded-2xl shadow-xl max-w-sm mt-16 pb-auto">
+          <div className="flex flex-col gap-6 items-center justify-center mb-12">
             <img 
               src={user?.photoURL || "/default-profile.png"}
               alt="Profile" 
