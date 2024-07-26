@@ -9,7 +9,7 @@ import { ImTwitch } from "react-icons/im";
 import { SiFrontendmentor, SiCodewars } from "react-icons/si";
 import { FaHashnode } from "react-icons/fa6";
 import { FaDev, FaFreeCodeCamp, FaGitlab, FaStackOverflow } from "react-icons/fa";
-import { Link } from '../../types/link'; // Adjust the import path
+import { Link } from '@/types/link';
 
 const platformOptions = [
   { value: 'Github', label: 'Github', icon: <AiOutlineGithub className="mr-2" /> },
@@ -104,7 +104,7 @@ const Customize: React.FC<CustomizeProps> = ({ onAddLink }) => {
             <form onSubmit={handleFormSubmit} className="bg-gray-100 p-6 rounded-lg mb-8 flex flex-col gap-4">
               <div className="flex justify-between">
                 <div className="flex items-center justify-center gap-2">
-                  <HiOutlineMenuAlt4 className='text-2xl'/><h1 className='text-2xl'>Link</h1> <h1 className='text-2xl'>#1</h1>
+                  <HiOutlineMenuAlt4 className='text-2xl'/><h1>Link</h1> <h1>#1</h1>
                 </div>
                 <button 
                   onClick={handleRemove}
@@ -117,7 +117,7 @@ const Customize: React.FC<CustomizeProps> = ({ onAddLink }) => {
               <h1 className='text-1xl'>Platform</h1>
               <Menu as="div" className="relative inline-block text-left">
                 <div>
-                  <MenuButton className={`flex w-full justify-between gap-x-1.5 rounded-md bg-white px-3 py-3 text-xl text-[#737373] border  hover:border-[#633cff]  ${errors.platform ? 'ring-red-500' : 'ring-gray-300'}`}>
+                  <MenuButton className={`flex w-full inputField justify-between gap-x-1.5 rounded-md bg-white px-3 py-3 text-xl text-[#737373]  ${errors.platform ? 'border-red-600' : ''}`}>
                     <div className="flex items-center justify-center gap-2">
                       {selectedPlatform ? selectedPlatform.icon : <span className="mr-2"></span>}
                       {selectedPlatform ? selectedPlatform.label : <span className='text-sm '>Select Platform</span>}
@@ -155,19 +155,20 @@ const Customize: React.FC<CustomizeProps> = ({ onAddLink }) => {
                   </div>
                 </Menu.Items>
               </Menu>
-              {errors.platform && <p className="text-[#ff3939] text-sm">{errors.platform}</p>}
-              <h1 className='text-1xl'>Links</h1>
-              <div className="relative mt-2 rounded-md shadow-sm">
+              {errors.platform && <p className="text-red-600 text-sm">{errors.platform}</p>}
+              <h1 className={`text-1xl ${errors.platform ? 'text-red-600' : ''}`}>Link</h1>
+
+              <div className="relative rounded-md shadow-sm">
                 <input
                   type="text"
                   name="url"
                   value={newLink.url}
                   onChange={handleFormChange}
                   placeholder="https://example.com"
-                  className={`block w-full rounded-md bg-white px-3 py-3 text-xl text-[#737373] border  hover:border-[#633cff]  ${errors.url ? 'ring-red-500' : 'ring-gray-300'}`} 
+                  className={`block w-full rounded-md inputField bg-white px-3 py-3 text-xl text-[#737373] border ${errors.url ? 'border-red-600' : 'border-gray-300'}`} 
                 />
+                {errors.url && <p className="text-red-600 text-sm absolute right-2 top-1/2 transform -translate-y-1/2">{errors.url}</p>}
               </div>
-              {errors.url && <p className="text-[#ff3939] text-sm">{errors.url}</p>}
             </form>
           ) : (
             <div className="flex flex-col items-center justify-center">

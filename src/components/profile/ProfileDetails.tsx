@@ -92,7 +92,7 @@ const ProfileDetails = () => {
         </div>
         <div className="bg-gray-100 m-8 rounded-lg border border-gray-300">
           <div className="flex flex-col">
-            <form onSubmit={handleFormSubmit} className="">
+            <form onSubmit={handleFormSubmit} className="space-y-6">
               <div className="my-7 lg:grid lg:grid-cols-2 grid-cols-1 items-center relative px-8">
                 <label htmlFor="firstName" className="block text-[16px] font-medium text-[#737373] mb-1">First Name*</label>
                 <div className="relative w-full">
@@ -141,14 +141,14 @@ const ProfileDetails = () => {
             </form>
           </div>
         </div>
-          <div className="bg-white mr-6 rounded-b-lg flex justify-end lg:pr-auto lg:py-2 mt-44">
-            <button 
-              onClick={handleFormSubmit}
-              className="bg-[#633CFF] text-white font-bold px-8 py-4 rounded-xl hover:bg-[#BEADFF] transition-colors duration-200 sm:w-full lg:w-auto"
-            >
-              Save
-            </button>
-          </div>
+        <div className="bg-white mr-6 rounded-b-lg flex justify-end lg:pr-auto lg:py-2 mt-4 lg:mt-44">
+          <button 
+            onClick={handleFormSubmit}
+            className="bg-[#633CFF] text-white font-bold px-8 py-4 rounded-xl hover:bg-[#BEADFF] transition-colors duration-200 sm:w-full lg:w-auto"
+          >
+            Save
+          </button>
+        </div>
       </AnimationWrapper>
     </>
   );
