@@ -76,7 +76,7 @@ const ProfileDetails = () => {
   return (
     <>
       <AnimationWrapper keyValue="uniqueKey1">
-        <div className="flex flex-col justify-between gap-3">
+        <div className="flex flex-col justify-between gap-3 bg-white rounded-xl shadow-md">
         <div className="">
         <h1 className="text-[32px] font-bold my-2 pl-8">Profile Details</h1>
         <p className="mb-6 text-gray-700 px-8">Add your details to create a personal touch on your profile.</p>

@@ -17,7 +17,7 @@ const Navbar = ({ setView }: { setView: (view: string) => void }) => {
 
   return (
     <nav className="bg-white shadow-sm m-8 rounded-xl">
-      <div className="mx-auto flex items-center justify-between p-8">
+      <div className="mx-auto flex items-center justify-between px-8 py-4">
         <Link href="/">
           <div className="flex items-center space-x-2 cursor-pointer">
             <div className="bg-[#633CFF] rounded-md text-white p-2">

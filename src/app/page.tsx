@@ -72,7 +72,7 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="shadow-md rounded-xl w-full lg:w-[60%] flex flex-col gap-2">
+          <div className="rounded-xl w-full lg:w-[60%] flex flex-col gap-2">
             {view === 'links' ? (
              <Customize onAddLink={handleAddLink} />
             ) : (
