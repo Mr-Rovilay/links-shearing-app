@@ -107,7 +107,7 @@ const ProfileDetails = () => {
           </div>
         </div>
         <div className="bg-gray-100 m-8 rounded-lg">
-          <div className="flex flex-col">
+          <div className="flex flex-col mb-5">
             <form onSubmit={handleFormSubmit} className="space-y-3">
               <div className="mt-7 lg:grid lg:grid-cols-2 grid-cols-1 items-center relative px-8">
                 <label htmlFor="firstName" className="block text-[16px] font-medium text-[#737373] mb-1">First Name*</label>
@@ -139,9 +139,9 @@ const ProfileDetails = () => {
                   {errors.lastName && <p className="absolute right-2 top-1/2 transform -translate-y-1/2 text-red-500 text-sm">{errors.lastName}</p>}
                 </div>
               </div>
-              <div className="mb-6 lg:grid lg:grid-cols-2 grid-cols-1 items-center relative px-8">
+              <div className="mb-10 lg:grid lg:grid-cols-2 grid-cols-1 items-center relative px-8">
                 <label htmlFor="email" className="block text-[16px] font-medium text-[#737373] mb-1">Email*</label>
-                <div className="relative w-full mb-6">
+                <div className="relative w-full">
                   <input
                     type="email"
                     id="email"

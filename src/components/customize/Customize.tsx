@@ -101,7 +101,7 @@ const Customize: React.FC<CustomizeProps> = ({ onAddLink }) => {
             </button>
           </div>
           {showForm ? (
-            <form onSubmit={handleFormSubmit} className="bg-gray-100 p-6 rounded-lg mb-8 flex flex-col gap-4">
+            <form onSubmit={handleFormSubmit} className="bg-[#fafafa] p-6 rounded-lg mb-8 flex flex-col gap-4">
               <div className="flex justify-between">
                 <div className="flex items-center justify-center gap-2">
                   <HiOutlineMenuAlt4 className='text-2xl'/><h1>Link</h1> <h1>#1</h1>
