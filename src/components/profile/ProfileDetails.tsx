@@ -76,12 +76,15 @@ const ProfileDetails = () => {
   return (
     <>
       <AnimationWrapper keyValue="uniqueKey1">
-        <h1 className="text-3xl font-bold mb-4 p-8">Profile Details</h1>
+        <div className="flex flex-col justify-between gap-3">
+        <div className="">
+        <h1 className="text-[32px] font-bold my-2 pl-8">Profile Details</h1>
         <p className="mb-6 text-gray-700 px-8">Add your details to create a personal touch on your profile.</p>
+        </div>
         <div className="grid gap-8 mb-8 px-8">
-          <div className="grid lg:grid-cols-3 grid-cols-1 bg-gray-100 items-center p-6 rounded-lg border border-gray-300">
-            <h2 className="text-xl font-semibold mb-2">Profile Picture</h2>
-            <div className="relative flex flex-col my-6 items-center justify-center bg-[#efebff] border-dashed border-2 border-gray-300 rounded-lg h-48 overflow-hidden">
+          <div className="grid lg:grid-cols-3 grid-cols-1 bg-gray-100 items-center pl-6 rounded-lg">
+            <h2 className="text-sm text-[#737373] mb-2">Profile Picture</h2>
+            <div className="relative flex flex-col my-6 items-center justify-center bg-[#efebff] rounded-lg h-48 overflow-hidden">
               {formData.profileImage ? (
                 <img src={formData.profileImage} alt="Profile Preview" className="w-full h-full object-cover" />
               ) : (
@@ -98,15 +101,15 @@ const ProfileDetails = () => {
                 id="fileInput"
               />
             </div>
-            <div className="text-left p-4">
-              <p className="text-sm text-gray-500">Image must be below 1024x1024px. Use PNG or JPEG format.</p>
+            <div className="text-left pl-4">
+              <p className="text-sm text-[#737373] ">Image must be below 1024x1024px. Use PNG or JPEG format.</p>
             </div>
           </div>
         </div>
-        <div className="bg-gray-100 m-8 rounded-lg border border-gray-300">
+        <div className="bg-gray-100 m-8 rounded-lg">
           <div className="flex flex-col">
-            <form onSubmit={handleFormSubmit} className="space-y-6">
-              <div className="my-7 lg:grid lg:grid-cols-2 grid-cols-1 items-center relative px-8">
+            <form onSubmit={handleFormSubmit} className="space-y-3">
+              <div className="mt-7 lg:grid lg:grid-cols-2 grid-cols-1 items-center relative px-8">
                 <label htmlFor="firstName" className="block text-[16px] font-medium text-[#737373] mb-1">First Name*</label>
                 <div className="relative w-full">
                   <input
@@ -116,7 +119,7 @@ const ProfileDetails = () => {
                     placeholder='e.g. John'
                     value={formData.firstName}
                     onChange={handleChange}
-                    className={`block w-full inputField p-2 border rounded-md ${errors.firstName ? 'border-red-500' : 'border-gray-300'}`}
+                    className={`block w-full inputField p-2 text-[16px] text-[#737373] border rounded-md ${errors.firstName ? 'border-red-500' : 'border-gray-300'}`}
                   />
                   {errors.firstName && <p className="absolute right-2 top-1/2 transform -translate-y-1/2 text-red-500 text-sm">{errors.firstName}</p>}
                 </div>
@@ -131,7 +134,7 @@ const ProfileDetails = () => {
                     placeholder='e.g. Doe'
                     value={formData.lastName}
                     onChange={handleChange}
-                    className={`block inputField w-full p-2 border rounded-md ${errors.lastName ? 'border-red-500' : 'border-gray-300'}`}
+                    className={`block inputField w-full p-2 text-[16px] text-[#737373] border rounded-md ${errors.lastName ? 'border-red-500' : 'border-gray-300'}`}
                   />
                   {errors.lastName && <p className="absolute right-2 top-1/2 transform -translate-y-1/2 text-red-500 text-sm">{errors.lastName}</p>}
                 </div>
@@ -146,7 +149,7 @@ const ProfileDetails = () => {
                     placeholder='e.g. 123@example.com'
                     value={formData.email}
                     onChange={handleChange}
-                    className={`block w-full inputField p-2 border rounded-md ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
+                    className={`block w-full text-[16px] text-[#737373] inputField p-2 border rounded-md ${errors.email ? 'border-red-500' : 'border-[#fafafa]'}`}
                   />
                   {errors.email && <p className="absolute right-2 top-1/2 transform -translate-y-1/2 text-red-500 text-sm">{errors.email}</p>}
                 </div>
@@ -154,13 +157,15 @@ const ProfileDetails = () => {
             </form>
           </div>
         </div>
-        <div className="bg-white mr-6 rounded-b-lg flex justify-end lg:pr-auto lg:py-2 mt-4 lg:mt-44">
+        <div className="bg-white rounded-b-lg lg:pr-auto lg:py-2 flex justify-end mt-4 pr-7">
           <button 
             onClick={handleFormSubmit}
             className="bg-[#633CFF] text-white font-bold px-8 py-4 rounded-xl hover:bg-[#BEADFF] transition-colors duration-200 sm:w-full lg:w-auto"
           >
             Save
           </button>
+        </div>
+
         </div>
       </AnimationWrapper>
     </>
