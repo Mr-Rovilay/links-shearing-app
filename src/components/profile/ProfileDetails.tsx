@@ -1,8 +1,10 @@
 'use client';
 
 import AnimationWrapper from '@/components/common/AnimationWrapper';
-import { useState, ChangeEvent, FormEvent } from 'react';
+import { useState, ChangeEvent, FormEvent, useEffect } from 'react';
 import { CiImageOn } from "react-icons/ci";
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '@/lib/firebaseConfig';
 
 interface FormData {
   firstName: string;
@@ -26,6 +28,17 @@ const ProfileDetails = () => {
   });
 
   const [errors, setErrors] = useState<Errors>({});
+  const [user] = useAuthState(auth); // Get the current user from Firebase
+
+  useEffect(() => {
+    if (user) {
+      // Populate formData with user's email when component mounts
+      setFormData(prevData => ({
+        ...prevData,
+        email: user.email || ''
+      }));
+    }
+  }, [user]);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -125,7 +138,7 @@ const ProfileDetails = () => {
               </div>
               <div className="mb-6 lg:grid lg:grid-cols-2 grid-cols-1 items-center relative px-8">
                 <label htmlFor="email" className="block text-[16px] font-medium text-[#737373] mb-1">Email*</label>
-                <div className="relative w-full">
+                <div className="relative w-full mb-6">
                   <input
                     type="email"
                     id="email"

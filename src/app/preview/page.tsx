@@ -1,16 +1,20 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { signOut } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/lib/firebaseConfig';
+import { Link as LinkType } from '@/types/link';
 
 const Preview = () => {
   const [user] = useAuthState(auth);
   const router = useRouter();
+  const [links, setLinks] = useState<LinkType[]>([]);
+  const colors = ["#FF3939", "#333333", "#6336ff", "#Beadff", "#FF8C33", "#FAFAFA", "#8D493A"];
+
 
   const handleLogout = async () => {
     await signOut(auth);
@@ -26,7 +30,7 @@ const Preview = () => {
         <nav className="absolute top-0 left-0 right-0 bg-white shadow-lg rounded-xl mx-8 mt-8 sm:px-11">
           <div className="flex items-center justify-between p-8">
             <Link href="/" passHref>
-              <button className="border border-[#633cff] text-[#633cff] font-bold px-7 py-4 rounded-lg transition-transform transform hover:scale-105">
+              <button className="border border-[#633cff] text-[#633cff] font-bold px-7 py-4 rounded-lg hover:bg-[#BEADFF]">
                 Back to Editor
               </button>
             </Link>
@@ -47,21 +51,28 @@ const Preview = () => {
               alt="Profile" 
               className="w-24 h-24 rounded-full mb-2 mt-6 shadow-md" 
             />
-            <p className="text-2xl font-bold text-gray-800">{user?.displayName || "User Name"}</p>
+            <div className="flex gap-2 justify-center items-center">
+              <p className="text-gray-600">{user?.displayName?.split(' ')[0] || "First Name"}</p>
+              <p className="text-gray-600">{user?.displayName?.split(' ')[1] || "Last Name"}</p>
+            </div>
             <p className="text-gray-600">{user?.email || "user.email@example.com"}</p>
           </div>
           
-          <div className="flex items-center justify-between p-6 rounded-md shadow-inner bg-gray-100 w-full">
-            <div className="flex justify-center items-center gap-2">
-              <span className='text-black text-xl'>link icon</span>
-              <a href="#" target="_blank" rel="noopener noreferrer" className="text-black hover:text-[#633cff] transition-colors">
-                link label
-              </a>
+          {links.map((link, index) => (
+            <div
+              key={index}
+              className="flex items-center justify-between p-6 rounded-md shadow-sm"
+              style={{ backgroundColor: colors[index % colors.length] }}
+            >
+              <div className="flex justify-center items-center gap-2">
+                <span className='text-white text-xl'>{link.icon}</span>
+                <a href={link.url} target="_blank" rel="noopener noreferrer" className="text-white">{link.title}</a>
+              </div>
+              <div className="text-white">
+                <FaLongArrowAltRight />
+              </div>
             </div>
-            <div className="text-black">
-              <FaLongArrowAltRight />
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </>

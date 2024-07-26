@@ -20,9 +20,7 @@ const Home = () => {
   const colors = ["#FF3939", "#333333", "#6336ff", "#Beadff", "#FF8C33", "#FAFAFA", "#8D493A"];
 
   const handleAddLink = (newLink: Link) => {
-    console.log('Link to be added:', newLink);
     setLinks((prevLinks) => [...prevLinks, newLink]);
-    console.log('Updated links:', [...links, newLink]);
   };
 
   useEffect(() => {
@@ -50,7 +48,11 @@ const Home = () => {
                       alt="Profile" 
                       className="w-24 h-24 rounded-full mb-2 mt-6" 
                     />
-                    <p className="text-xl font-bold">{user?.displayName || "User Name"}</p>
+                    <div className="flex gap-2 justify-center items-center">
+                      
+                    <p className="text-gray-600">{user?.firstName || "first Name"}</p>
+                    <p className="text-gray-600">{user?.lastName || "last Name"}</p>
+                    </div>
                     <p className="text-gray-600">{user?.email || "user.email@example.com"}</p>
                   </div>
                   {links.map((link, index) => (
